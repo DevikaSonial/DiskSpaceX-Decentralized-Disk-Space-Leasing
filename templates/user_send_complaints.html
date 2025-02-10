@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #e74c3c;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .complaint-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .complaint-icon svg {
+            width: 25px;
+            height: 25px;
+            color: white;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .submit-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Complaints List Styles */
+        .complaints-list {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .complaints-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .complaints-table th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .complaints-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eef2f7;
+            color: #34495e;
+        }
+
+        .complaints-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .complaints-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        .date-cell {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .reply-cell {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    {%include 'user_header.html'%}
+
+    <br><br><br><br><br><br>
+
+    <div class="content-container">
+        <!-- Complaint Form -->
+        <div class="form-container">
+            <div class="form-header">
+                <div class="complaint-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <h2 class="section-title">Submit a Complaint</h2>
+            </div>
+
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="tit" class="form-input" required="" placeholder="Brief title for your complaint">
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="desc" required="" class="form-input form-textarea" 
+                        placeholder="Please provide detailed information about your complaint..."></textarea>
+                </div>
+
+                <button type="submit" name="send" class="submit-button">Submit Complaint</button>
+            </form>
+        </div>
+
+        <!-- Complaints List -->
+        <div class="complaints-list">
+            <div class="form-header">
+                <div class="complaint-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h2 class="section-title">Your Complaints</h2>
+            </div>
+
+            <table class="complaints-table">
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Reply</th>
+                    <th>Date</th>
+                </tr>
+
+                {%for i in data['complaints']%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i['title']}}</td>
+                    <td>{{i['description']}}</td>
+                    <td class="reply-cell">{{i['reply']}}</td>
+                    <td class="date-cell">{{i['date']}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    {%include 'footer.html'%}
+</body>
+</html>

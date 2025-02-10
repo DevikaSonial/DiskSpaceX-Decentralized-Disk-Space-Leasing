@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .profile-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .profile-icon svg {
+            width: 25px;
+            height: 25px;
+            color: white;
+        }
+
+        .form-title {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #bdc3c7;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .submit-button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    {%include 'user_header.html'%}
+
+    <br><br><br><br><br>
+
+    {%if data['edit']%}
+    <div class="form-container">
+        <div class="form-header">
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h2 class="form-title">Edit Profile</h2>
+        </div>
+
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" id="fname" name="fname" class="form-input" 
+                    placeholder="Enter your first name" value="{{data['edit'][0]['fname']}}">
+            </div>
+
+            <div class="form-group">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" id="lname" name="lname" class="form-input" 
+                    placeholder="Enter your last name" value="{{data['edit'][0]['lname']}}">
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" id="phone" name="ph" class="form-input" 
+                    placeholder="Enter your phone number" value="{{data['edit'][0]['phone']}}">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="mail" class="form-input" 
+                    placeholder="Enter your email address" value="{{data['edit'][0]['email']}}">
+            </div>
+
+            <button type="submit" name="edit" class="submit-button">Save Changes</button>
+        </form>
+    </div>
+    {%endif%}
+
+    <br><br><br>
+
+    {%include 'footer.html'%}
+</body>
+</html>

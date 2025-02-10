@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 20px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .complaint-number {
+            background-color: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .card-content {
+            color: #34495e;
+        }
+
+        .card-content p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .description {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .reply {
+            background-color: #e8f4fe;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        .reply-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .reply-button:hover {
+            background-color: #2980b9;
+        }
+
+        .no-reply {
+            color: #e74c3c;
+            font-style: italic;
+        }
+
+        /* Styles for pending status */
+        .card[data-status="pending"] {
+            border-top-color: #e74c3c;
+            opacity: 0.7;
+        }
+
+        .card[data-status="pending"] .reply-button {
+            background-color: #ccc;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .card[data-status="pending"] .complaint-number {
+            background-color: #e74c3c;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .status-pending {
+            background-color: #ffeaea;
+            color: #e74c3c;
+        }
+
+        .status-active {
+            background-color: #eafff4;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    {%include 'admin_header.html'%}
+<br><br><br><br><br><br>
+    <div class="card-container">
+        {%for i in data['complaints']%}
+        <div class="card" data-status="{{i['status']}}">
+            <div class="card-header">
+                <h3 class="card-title">{{i['title']}}</h3>
+                <span class="complaint-number">#{{loop.index}}</span>
+            </div>
+            <div class="card-content">
+                <div class="description">
+                    <span class="label">Description:</span>
+                    {{i['description']}}
+                </div>
+                
+                <div class="reply">
+                    <span class="label">Reply:</span>
+                    {% if i['reply'] %}
+                        {{i['reply']}}
+                    {% else %}
+                        <span class="no-reply">No reply yet</span>
+                    {% endif %}
+                </div>
+                
+                <div class="date">
+                    <span class="label">Date:</span>
+                    {{i['date']}}
+                </div>
+
+                <div class="status-badge {% if i['status'] == 'pending' %}status-pending{% else %}status-active{% endif %}">
+                    {{i['status']|upper}}
+                </div>
+
+                {% if i['status'] != 'pending' %}
+                    <a href="/admin_send_reply?id={{i['complaints_id']}}" class="reply-button">Send Reply</a>
+                {% endif %}
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <br><br><br><br>
+
+    {%include 'footer.html'%}
+</body>
+</html>

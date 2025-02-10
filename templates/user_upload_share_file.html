@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        tr {
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+            display: block;
+            width: 100%;
+        }
+
+        th {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #fff;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px dashed #3498db;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"]:hover {
+            background: #e9ecef;
+            border-color: #2980b9;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #2980b9;
+        }
+
+        input[type="submit"] {
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        input[type="submit"]:hover {
+            background: #2980b9;
+        }
+
+        @media (min-width: 768px) {
+            tr {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
+
+            th, td {
+                display: inline-block;
+                width: auto;
+            }
+
+            th {
+                width: 30%;
+                padding-right: 1rem;
+            }
+
+            td {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {%include 'user_header.html'%}
+
+    <br><br><br><br><br><br><br><br><br>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>Title</th>
+                <td>
+                    <div class="file-upload-wrapper">
+                        <input type="text" name="title" placeholder="Enter title">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td>
+                    <div class="file-upload-wrapper">
+                        <input type="file" name="file">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <input type="submit" name="send" value="UPLOAD">
+                </th>
+            </tr>
+        </table>
+    </form>
+
+    {%include 'footer.html'%}
+</body>
+</html>

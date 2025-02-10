@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #edf2f7;
+            color: #4a5568;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .sl-no {
+            width: 80px;
+            text-align: center;
+        }
+
+        .date {
+            width: 150px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .table-container {
+                margin: 1rem 0;
+                border-radius: 8px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Footer Spacing */
+        .footer-space {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    {%include 'user_header.html'%}
+
+    <br><br><br><br><br>
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sl-no">SL.No</th>
+                        <th>Title</th>
+                        <th class="date">Date</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for i in data['view']%}
+                    <tr>
+                        <td class="sl-no">{{loop.index}}</td>
+                        <td>{{i['title']}}</td>
+                        <td class="date">{{i['date']}}</td>
+                        <td class="date">{{i['status']}}</td>
+
+        
+                        <td><a href="/user_retrieve_files?upid={{i['upload_file_id']}}&uid={{i['user_id']}}&sid1={{i['system_details_first_id']}}&sid2={{i['system_details_second_id']}}" class="btn btn-danger">Retrieve File</a></td>
+                       
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer-space">
+        {%include 'footer.html'%}
+    </div>
+</body>
+</html>
