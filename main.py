@@ -15,10 +15,6 @@ app.register_blueprint(admin)
 app.register_blueprint(users)
 
 
-
-app.run(debug=True,port=5010)
-
-
-
+app.run(debug=True,port=5011)
 
 
