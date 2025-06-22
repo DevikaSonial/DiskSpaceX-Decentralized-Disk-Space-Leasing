@@ -1,6 +1,6 @@
 import mysql.connector
 user="root"
-password="1234567890"
+password=""
 database="blockchain_for_decentralized_storage"
 
 

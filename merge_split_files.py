@@ -5,12 +5,6 @@ import subprocess
 
 from database import *
 
-import os
-import shutil
-import zipfile
-import subprocess
-
-from database import *
 
 def retrieve_file(shared_folder, file_name, local_path, username, password):
     """

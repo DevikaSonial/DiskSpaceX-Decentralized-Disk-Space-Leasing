@@ -63,14 +63,13 @@
       <a href="#" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="/static/assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Decentralized Storage</h1>
+        <h1 class="sitename">DiskSpaceX</h1>
       
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="/login">Login</a></li>
           <li><a href="/public_user_register">User Register</a></li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
           <!-- <li><a href="#team">Team</a></li> -->
@@ -101,3 +100,64 @@
 
     </div>
   </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1>Better Solutions For Your Storage</h1>
+          
+            <div class="d-flex">
+              <a href="#" class="btn-get-started">Get Started</a>
+
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="/static/assets/img/hero-img.png" class="img-fluid animated" alt="image">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+ <!-- About Section -->
+ <section id="about" class="about section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>About Us</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+        <p>
+          DiskSpaceX envisions a decentralized file storage system that revolutionizes data management through a seamless integration of blockchain technology, encryption, and distributed storage. At its core, the system empowers users with a secure and intuitive interface to upload, encrypt, and retrieve their data, ensuring privacy and protection. The encryption module fortifies data security, enabling files to be stored in encrypted form across distributed storage units, providing redundancy and scalability.  
+
+        </p>
+        <ul>
+          A robust blockchain network orchestrates operations by leveraging smart contracts to automate and securely manage storage transactions. The use of a Ganache node facilitates seamless contract execution and testing, while sharding enhances scalability by dividing the blockchain into smaller shards for parallel transaction processing, significantly improving throughput and efficiency.  
+
+        </ul>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <p>
+          DiskSpaceX is designed to eliminate dependency on centralized storage providers by leveraging decentralized storage systems such as IPFS, ensuring transparency, reliability, and resilience. Through this architecture, DiskSpaceX aims to create a future where data privacy, security, and accessibility converge, offering individuals and industries a decentralized solution to meet the growing demand for secure and scalable storage. </p>
+        <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+   
+
+
+{% include "footer.html" %}
