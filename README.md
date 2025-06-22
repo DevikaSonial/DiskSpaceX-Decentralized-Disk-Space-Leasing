@@ -1,2 +1,4 @@
 # Decentralized-Storage
 Blockchain for Decentralized Storage
+
+DiskSpaceX is an immutable, blockchain based, decentralized disk space renting system used for safe and efficient storage management. It includes secure sharing and accessing available space by encrypting, dividing, and distributing the data among the integrated systems. Using blockchain, storage path becomes verifiable and tamper evident and for data security, it has been made immutable. Whenever the file is needed, it get merged and decrypted, providing a very simplistic way of accessing. It offers increased security, maximum utilization of resources, and a cost efficient feature compared to the usual cloud storage. DiskSpaceX provides secure, transparent, and scalable file storage by means of decentralization, cryptographic security, and smart contracts.
